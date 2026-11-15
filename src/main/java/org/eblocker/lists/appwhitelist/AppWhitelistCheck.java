@@ -20,7 +20,7 @@ import org.eblocker.server.common.blacklist.DomainFilter;
 import org.eblocker.server.common.blacklist.FilterDecision;
 import org.eblocker.server.common.blacklist.HashFileFilter;
 import org.eblocker.server.common.blacklist.HashingFilter;
-import org.eblocker.server.common.blacklist.HostnameFilter;
+import org.eblocker.server.common.blacklist.Filters;
 import org.eblocker.server.common.blacklist.SingleFileFilter;
 import org.eblocker.server.common.data.parentalcontrol.Category;
 import org.eblocker.server.common.data.parentalcontrol.ParentalControlFilterMetaData;
@@ -179,7 +179,7 @@ public class AppWhitelistCheck {
                 default:
                     throw new IllegalArgumentException("unknown format " + metadata.getFormat());
             }
-            return new HostnameFilter(filter);
+            return Filters.hostname(filter);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
